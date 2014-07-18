@@ -62,9 +62,8 @@
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;d3dcompiler.lib;Effects11.lib;dinput8.lib;dxguid.lib;Shlwapi.lib;Libraryd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>mkdir "$(OutDir)Content"
-IF EXIST "$(SolutionDir)..\content" xcopy /E /Y "$(SolutionDir)..\content" "$(OutDir)Content\"
-IF EXIST "$(ProjectDir)..\content" xcopy /E /Y "$(ProjectDir)Content" "$(OutDir)Content\"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +85,7 @@ IF EXIST "$(ProjectDir)..\content" xcopy /E /Y "$(ProjectDir)Content" "$(OutDir)
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="program.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

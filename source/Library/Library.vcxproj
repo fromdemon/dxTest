@@ -10,6 +10,18 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.hpp" />
+    <ClInclude Include="game_clock.hpp" />
+    <ClInclude Include="game_exception.hpp" />
+    <ClInclude Include="game_time.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_clock.cpp" />
+    <ClCompile Include="game_exception.cpp" />
+    <ClCompile Include="game_time.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{973E22BC-166A-44BA-9BFE-EC42226FB68E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -56,6 +68,10 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir "$(SolutionDir)..\lib\"
+copy "$(TargetPath)" "$(SolutionDir)..\lib\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
