@@ -62,7 +62,7 @@ namespace Library {
     mWindow.hInstance = mInstance;
     mWindow.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
     mWindow.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
-    mWindow.hCursor = LoadCursor(nullptr, IDC_UPARROW);
+    mWindow.hCursor = LoadCursor(nullptr, IDC_ARROW);
     mWindow.hbrBackground = GetSysColorBrush(COLOR_3DDKSHADOW);
     mWindow.lpszClassName = mWindowClass.c_str();
 
