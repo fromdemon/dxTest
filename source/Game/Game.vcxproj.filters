@@ -18,5 +18,13 @@
     <ClCompile Include="program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rendering_game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rendering_game.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(WindowsSDK_LibraryPath_x86);$(SolutionDir)..\lib;$(SolutionDir)..\external\Effects11\Bin\Desktop_2013\Win32\Debug;$(SolutionDir)..\external\DirectXTK\Bin\Desktop_2013\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(WindowsSDK_LibraryPath_x86);$(SolutionDir)..\external\Effects11\Bin\Desktop_2013\Win32\Debug;$(SolutionDir)..\external\DirectXTK\Bin\Desktop_2013\Win32\Debug;$(TargetDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;d3dcompiler.lib;Effects11.lib;dinput8.lib;dxguid.lib;Shlwapi.lib;Libraryd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
@@ -86,6 +86,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="program.cpp" />
+    <ClCompile Include="rendering_game.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rendering_game.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

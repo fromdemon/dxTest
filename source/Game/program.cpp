@@ -1,5 +1,5 @@
 #include <memory>
-#include "game.hpp"
+#include "rendering_game.hpp"
 #include "game_exception.hpp"
 
 #if defined(DEBUG) || defined(_DEBUG)
@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE previousInstance, LPSTR command
   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
-  std::unique_ptr<Library::Game> game(new Library::Game(instance, L"RenderingClass", L"Real-time rendering.", showCommand));
+  std::unique_ptr<Rendering::RenderingGame> game(new Rendering::RenderingGame(instance, L"RenderingClass", L"Real-time rendering.", showCommand));
 
   try {
     game->Run();

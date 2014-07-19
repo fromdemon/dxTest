@@ -1,7 +1,6 @@
 #pragma once
 
-#include <windows.h>
-#include <string>
+#include "common.hpp"
 #include "game_clock.hpp"
 #include "game_time.hpp"
 
@@ -23,6 +22,14 @@ namespace Library {
     const std::wstring& WindowClass() const { return mWindowClass; }
     const std::wstring& WindowTitle() const { return mWindowTitle; }
 
+    ID3D11Device1* Direct3DDevice() const { return mDirect3DDevice; }
+    ID3D11DeviceContext1* Direct3DDeviceContext() const { return mDirect3DDeviceContext; }
+    bool DepthBufferStencilEnabled() const { return mDepthStencilBufferEnabled; }
+    float AspectRatio() const { return (float)(mScreenWidth / mScreenHeight); }
+    bool IsfullScreen() const { return mIsFullscreen; }
+    const D3D11_TEXTURE2D_DESC& BackBufferDesc() const { return mBackBufferDesc; }
+    const D3D11_VIEWPORT& Viewport() const { return mViewport; }
+
     virtual void Initialize();
     virtual void Run();
     virtual void Exit();
@@ -31,10 +38,13 @@ namespace Library {
 
   protected:
     virtual void InitializeWindow();
+    virtual void InitializeDirectX();
     virtual void Shutdown();
 
     static const unsigned int DefaultScreenWidth;
     static const unsigned int DefaultScreenHeight;
+    static const unsigned int DefaultFrameRate;
+    static const unsigned int DefaultMultiSamplingRate;
     unsigned int mScreenWidth;
     unsigned int mScreenHeight;
 
@@ -49,6 +59,25 @@ namespace Library {
     GameTime mGameTime;
     GameClock mGameClock;
 
+    D3D_FEATURE_LEVEL mFeatureLevel = D3D_FEATURE_LEVEL_11_1;
+    ID3D11Device1* mDirect3DDevice = nullptr;
+    ID3D11DeviceContext1* mDirect3DDeviceContext = nullptr;
+    IDXGISwapChain1* mSwapChain = nullptr;
+
+    unsigned int mFrameRate;
+    bool mIsFullscreen = false;
+    bool mDepthStencilBufferEnabled = false;
+    bool mMultiSamplingEnabled = false;
+    unsigned int mMultiSamplingCount;
+    unsigned int mMultiSamplingQualityLevels = 0;
+
+    ID3D11Texture2D* mDepthStencilBuffer = nullptr;
+    D3D11_TEXTURE2D_DESC mBackBufferDesc;
+    ID3D11RenderTargetView* mRenderTargetView = nullptr;
+    ID3D11DepthStencilView* mDepthStencilView = nullptr;
+    D3D11_VIEWPORT mViewport;
+
+  private:
     POINT CenterWindow(int windowWidth, int windowHeight);
     static LRESULT WINAPI WndProc(HWND windowHandle, unsigned int message, WPARAM wParam, LPARAM lParam);
   }; // class Game

@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="game_clock.hpp" />
     <ClInclude Include="game_exception.hpp" />
@@ -69,8 +70,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)..\lib\"
-copy "$(TargetPath)" "$(SolutionDir)..\lib\"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
