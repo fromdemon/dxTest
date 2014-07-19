@@ -54,7 +54,7 @@ namespace Library {
     mWindow.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
     mWindow.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
     mWindow.hCursor = LoadCursor(nullptr, IDC_UPARROW);
-    mWindow.hbrBackground = CreateSolidBrush(RGB(255,255,255));
+    mWindow.hbrBackground = GetSysColorBrush(COLOR_3DDKSHADOW);
     mWindow.lpszClassName = mWindowClass.c_str();
 
     RECT windowRect = {0, 0, mScreenWidth, mScreenHeight};
