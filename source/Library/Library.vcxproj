@@ -12,16 +12,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.hpp" />
+    <ClInclude Include="drawable_game_component.hpp" />
+    <ClInclude Include="fps_component.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="game_clock.hpp" />
+    <ClInclude Include="game_component.hpp" />
     <ClInclude Include="game_exception.hpp" />
     <ClInclude Include="game_time.hpp" />
+    <ClInclude Include="rtti.hpp" />
+    <ClInclude Include="utility.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="drawable_game_component.cpp" />
+    <ClCompile Include="fps_component.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_clock.cpp" />
+    <ClCompile Include="game_component.cpp" />
     <ClCompile Include="game_exception.cpp" />
     <ClCompile Include="game_time.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{973E22BC-166A-44BA-9BFE-EC42226FB68E}</ProjectGuid>
