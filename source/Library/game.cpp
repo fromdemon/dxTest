@@ -1,6 +1,6 @@
 #include "game.hpp"
 #include "game_exception.hpp"
-
+#include "SDL_syswm.h"
 namespace Library {
 
   const unsigned int Game::DefaultScreenWidth = 640;
@@ -29,18 +29,33 @@ namespace Library {
 
     mGameClock.Reset();
 
-    while (message.message != WM_QUIT) {
-      if (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE)) {
-        TranslateMessage(&message);
-        DispatchMessage(&message);
+    SDL_Event event;
+    while (running_) {
+      while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+          case SDL_QUIT:
+            running_ = false;
+            break;
+          case SDL_KEYDOWN:
+            switch (event.key.keysym.sym) {
+              case SDLK_ESCAPE:
+                running_ = false;
+                break;
+              case SDLK_SPACE:
+                SDL_SetWindowGrab(window_, SDL_FALSE);
+                break;
+              case SDLK_c:
+                SDL_SetWindowGrab(window_, SDL_TRUE);
+                break;
+            }
+            break;
+        }
       }
-      else {
-        mGameClock.UpdateGameTime(mGameTime);
-        Update(mGameTime);
-        Draw(mGameTime);
-      }
+      mGameClock.UpdateGameTime(mGameTime);
+      Update(mGameTime);
+      Draw(mGameTime);
     }
-
+    
     Shutdown();
   }
 
@@ -55,23 +70,19 @@ namespace Library {
   }
 
   void Game::InitializeWindow() {
-    ZeroMemory(&mWindow, sizeof(mWindow));
-    mWindow.cbSize = sizeof(WNDCLASSEX);
-    mWindow.style = CS_CLASSDC;
-    mWindow.lpfnWndProc = WndProc;
-    mWindow.hInstance = mInstance;
-    mWindow.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
-    mWindow.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
-    mWindow.hCursor = LoadCursor(nullptr, IDC_UPARROW);
-    mWindow.hbrBackground = GetSysColorBrush(COLOR_3DDKSHADOW);
-    mWindow.lpszClassName = mWindowClass.c_str();
+    int error = SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Surface *image;
+    image = SDL_LoadBMP("box.bmp");
+    std::string title_string;
+    title_string = "Leftfield Meadow";
+    SDL_SysWMinfo info;
 
-    RECT windowRect = {0, 0, mScreenWidth, mScreenHeight};
-    AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
+    window_ = SDL_CreateWindow(title_string.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
+    SDL_SetWindowIcon(window_, image);
 
-    RegisterClassEx(&mWindow);
-    POINT center = CenterWindow(mScreenWidth, mScreenHeight);
-    mWindowHandle = CreateWindow(mWindowClass.c_str(), mWindowTitle.c_str(), WS_OVERLAPPEDWINDOW, center.x, center.y, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, nullptr, nullptr, mInstance, nullptr);
+    SDL_VERSION(&info.version);
+    SDL_GetWindowWMInfo(window_, &info);
+    mWindowHandle = info.info.win.window;
     ShowWindow(mWindowHandle, mShowCommand);
     UpdateWindow(mWindowHandle);
   }
@@ -216,6 +227,8 @@ namespace Library {
   }
 
   void Game::Shutdown() {
+    SDL_DestroyWindow(window_);
+    SDL_Quit();
     ReleaseObject(mDepthStencilBuffer);
     ReleaseObject(mRenderTargetView);
     ReleaseObject(mDepthStencilView);

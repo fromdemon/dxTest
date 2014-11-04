@@ -3,12 +3,14 @@
 #include "common.hpp"
 #include "game_clock.hpp"
 #include "game_time.hpp"
+#include <SDL.h>
 
 namespace Library {
 
   class Game {
   public:
     Game(HINSTANCE instance, const std::wstring& windowClass, const std::wstring& windowTitle, int showCommand);
+
     ~Game();
 
     Game(const Game&) = delete;
@@ -58,7 +60,7 @@ namespace Library {
 
     GameTime mGameTime;
     GameClock mGameClock;
-
+    
     D3D_FEATURE_LEVEL mFeatureLevel = D3D_FEATURE_LEVEL_11_1;
     ID3D11Device1* mDirect3DDevice = nullptr;
     ID3D11DeviceContext1* mDirect3DDeviceContext = nullptr;
@@ -76,6 +78,11 @@ namespace Library {
     ID3D11RenderTargetView* mRenderTargetView = nullptr;
     ID3D11DepthStencilView* mDepthStencilView = nullptr;
     D3D11_VIEWPORT mViewport;
+    SDL_Window* window_;
+    int width = 800, height = 600;
+    bool running_ = true;
+    SDL_Rect rect;
+    SDL_Surface* screen_, *window_screen_;
 
   private:
     POINT CenterWindow(int windowWidth, int windowHeight);

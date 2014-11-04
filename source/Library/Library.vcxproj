@@ -14,8 +14,10 @@
     <ClInclude Include="common.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="game_clock.hpp" />
+    <ClInclude Include="game_component.hpp" />
     <ClInclude Include="game_exception.hpp" />
     <ClInclude Include="game_time.hpp" />
+    <ClInclude Include="rtti.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp" />
@@ -63,7 +65,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(WindowsSDK_IncludePath);$(SolutionDir)..\external\Effects11\inc;$(SolutionDir)..\external\DirectXTK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Libraries\sdl-2.0.3-MD\include;$(WindowsSDK_IncludePath);$(SolutionDir)..\external\Effects11\inc;$(SolutionDir)..\external\DirectXTK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

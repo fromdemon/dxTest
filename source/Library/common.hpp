@@ -1,5 +1,6 @@
 #pragma once
 
+#include "rtti.hpp"
 #include <windows.h>
 #include <exception>
 #include <cassert>
