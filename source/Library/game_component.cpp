@@ -2,31 +2,33 @@
 
 namespace Library {
 
-  GameComponent::GameComponent(Game& game) : mGame(&game) {
-  }
+RTTI_DEFINITIONS(GameComponent)
 
-  GameComponent::~GameComponent() {
-  }
+GameComponent::GameComponent(Game& game) : mGame(&game) {
+}
 
-  Game* GameComponent::GetGame() {
-    return mGame;
-  }
+GameComponent::~GameComponent() {
+}
 
-  void GameComponent::SetGame(Game& game) {
-    mGame = &game;
-  }
+Game* GameComponent::GetGame() {
+  return mGame;
+}
 
-  bool GameComponent::Enabled() const {
-    return mEnabled;
-  }
+void GameComponent::SetGame(Game& game) {
+  mGame = &game;
+}
 
-  void GameComponent::SetEnabled(bool enabled) {
-    mEnabled = enabled;
-  }
+bool GameComponent::Enabled() const {
+  return mEnabled;
+}
 
-  void GameComponent::Initialize() {
-  }
+void GameComponent::SetEnabled(bool enabled) {
+  mEnabled = enabled;
+}
 
-  void GameComponent::Update(const GameTime& gameTime) {
-  }
+void GameComponent::Initialize() {
+}
+
+void GameComponent::Update(const GameTime& gameTime) {
+}
 } // namespace Library

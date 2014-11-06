@@ -12,7 +12,7 @@ namespace DirectX {
 namespace Library {
 
   class FpsComponent : public DrawableGameComponent {
-    RTTI_DECLARATION(FpsComponent, DrawableGameComponent)
+    RTTI_DECLARATIONS(FpsComponent, DrawableGameComponent)
 
   public:
     FpsComponent() = delete;

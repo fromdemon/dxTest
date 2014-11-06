@@ -63,8 +63,9 @@
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;d3dcompiler.lib;Effects11.lib;dinput8.lib;dxguid.lib;Shlwapi.lib;Libraryd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>mkdir "$(OutDir)Content"
+IF EXIST "$(SolutionDir)..\content" xcopy /E /Y "$(SolutionDir)..\content" "$(OutDir)Content\"
+IF EXIST "$(ProjectDir)..\content" xcopy /E /Y "$(ProjectDir)Content" "$(OutDir)Content\"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,10 +87,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Library\triangle_demo.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="rendering_game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Library\triangle_demo.hpp" />
     <ClInclude Include="rendering_game.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

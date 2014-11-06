@@ -7,7 +7,7 @@ namespace Library {
   class Camera;
 
   class DrawableGameComponent : public GameComponent {
-    RTTI_DECLARATION(DrawableGameComponent, GameComponent)
+    RTTI_DECLARATIONS(DrawableGameComponent, GameComponent)
 
   public:
     DrawableGameComponent() = default;

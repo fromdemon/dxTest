@@ -21,9 +21,15 @@
     <ClCompile Include="rendering_game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Library\triangle_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering_game.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Library\triangle_demo.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

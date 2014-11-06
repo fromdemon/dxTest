@@ -8,7 +8,7 @@ namespace Library {
   class GameTime;
 
   class GameComponent : public RTTI {
-    RTTI_DECLARATION(GameComponent, RTTI)
+    RTTI_DECLARATIONS(GameComponent, RTTI)
 
   public:
     GameComponent() = default;

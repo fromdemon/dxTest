@@ -11,26 +11,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.hpp" />
+    <ClInclude Include="color_helper.hpp" />
     <ClInclude Include="common.hpp" />
     <ClInclude Include="drawable_game_component.hpp" />
+    <ClInclude Include="first_person_camera.hpp" />
     <ClInclude Include="fps_component.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="game_clock.hpp" />
     <ClInclude Include="game_component.hpp" />
     <ClInclude Include="game_exception.hpp" />
     <ClInclude Include="game_time.hpp" />
+    <ClInclude Include="keyboard.hpp" />
+    <ClInclude Include="matrix_helper.hpp" />
+    <ClInclude Include="mouse.hpp" />
+    <ClInclude Include="render_state_helper.hpp" />
     <ClInclude Include="rtti.hpp" />
+    <ClInclude Include="service_container.hpp" />
     <ClInclude Include="utility.hpp" />
+    <ClInclude Include="vector_helper.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="color_helper.cpp" />
     <ClCompile Include="drawable_game_component.cpp" />
+    <ClCompile Include="first_person_camera.cpp" />
     <ClCompile Include="fps_component.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_clock.cpp" />
     <ClCompile Include="game_component.cpp" />
     <ClCompile Include="game_exception.cpp" />
     <ClCompile Include="game_time.cpp" />
+    <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="matrix_helper.cpp" />
+    <ClCompile Include="mouse.cpp" />
+    <ClCompile Include="render_state_helper.cpp" />
+    <ClCompile Include="service_container.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="vector_helper.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{973E22BC-166A-44BA-9BFE-EC42226FB68E}</ProjectGuid>

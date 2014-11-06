@@ -10,11 +10,13 @@
 #include "rtti.hpp"
 
 #include <d3d11_1.h>
+#include <d3dx11Effect.h>
 #include <DirectXMath.h>
 #include <DirectXPackedVector.h>
+#include <dinput.h>
 
 #define DeleteObject(object) if((object) != NULL) {delete object; object = NULL;}
-#define DeleteObjects(object) if((objects) != NULL) {delete [] objects; objects = NULL;}
+#define DeleteObjects(objects) if((objects) != NULL) {delete [] objects; objects = NULL;}
 #define ReleaseObject(object) if((object) != NULL) {object->Release(); object = NULL;}
 
   namespace Library {

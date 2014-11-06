@@ -9,6 +9,8 @@
 
 namespace Library {
 
+  RTTI_DEFINITIONS(FpsComponent)
+
   FpsComponent::FpsComponent(Game& game) : DrawableGameComponent(game) {
   }
 

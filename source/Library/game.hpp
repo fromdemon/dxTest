@@ -3,6 +3,8 @@
 #include "common.hpp"
 #include "game_clock.hpp"
 #include "game_time.hpp"
+#include "game_component.hpp"
+#include "service_container.hpp"
 
 namespace Library {
 
@@ -29,6 +31,9 @@ namespace Library {
     bool IsfullScreen() const { return mIsFullscreen; }
     const D3D11_TEXTURE2D_DESC& BackBufferDesc() const { return mBackBufferDesc; }
     const D3D11_VIEWPORT& Viewport() const { return mViewport; }
+
+    const std::vector<GameComponent*>& Components() const;
+    const ServiceContainer& Services() const;
 
     virtual void Initialize();
     virtual void Run();
@@ -58,6 +63,8 @@ namespace Library {
 
     GameTime mGameTime;
     GameClock mGameClock;
+    std::vector<GameComponent*> mComponent;
+    ServiceContainer mServices;
 
     D3D_FEATURE_LEVEL mFeatureLevel = D3D_FEATURE_LEVEL_11_1;
     ID3D11Device1* mDirect3DDevice = nullptr;
