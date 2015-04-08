@@ -15,6 +15,7 @@
     <ClInclude Include="color_helper.hpp" />
     <ClInclude Include="common.hpp" />
     <ClInclude Include="drawable_game_component.hpp" />
+    <ClInclude Include="effect.hpp" />
     <ClInclude Include="first_person_camera.hpp" />
     <ClInclude Include="fps_component.hpp" />
     <ClInclude Include="game.hpp" />
@@ -23,18 +24,27 @@
     <ClInclude Include="game_exception.hpp" />
     <ClInclude Include="game_time.hpp" />
     <ClInclude Include="keyboard.hpp" />
+    <ClInclude Include="material.hpp" />
     <ClInclude Include="matrix_helper.hpp" />
+    <ClInclude Include="mesh.hpp" />
+    <ClInclude Include="model.hpp" />
+    <ClInclude Include="model_material.hpp" />
     <ClInclude Include="mouse.hpp" />
+    <ClInclude Include="pass.hpp" />
     <ClInclude Include="render_state_helper.hpp" />
     <ClInclude Include="rtti.hpp" />
     <ClInclude Include="service_container.hpp" />
+    <ClInclude Include="skybox.hpp" />
+    <ClInclude Include="technique.hpp" />
     <ClInclude Include="utility.hpp" />
+    <ClInclude Include="variable.hpp" />
     <ClInclude Include="vector_helper.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color_helper.cpp" />
     <ClCompile Include="drawable_game_component.cpp" />
+    <ClCompile Include="effect.cpp" />
     <ClCompile Include="first_person_camera.cpp" />
     <ClCompile Include="fps_component.cpp" />
     <ClCompile Include="game.cpp" />
@@ -43,12 +53,23 @@
     <ClCompile Include="game_exception.cpp" />
     <ClCompile Include="game_time.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="material.cpp" />
     <ClCompile Include="matrix_helper.cpp" />
+    <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="model.cpp" />
+    <ClCompile Include="model_material.cpp" />
     <ClCompile Include="mouse.cpp" />
+    <ClCompile Include="pass.cpp" />
     <ClCompile Include="render_state_helper.cpp" />
     <ClCompile Include="service_container.cpp" />
+    <ClCompile Include="technique.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="variable.cpp" />
     <ClCompile Include="vector_helper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="basic_effect.fx" />
+    <FxCompile Include="skybox.fx" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{973E22BC-166A-44BA-9BFE-EC42226FB68E}</ProjectGuid>
@@ -90,7 +111,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(WindowsSDK_IncludePath);$(SolutionDir)..\external\Effects11\inc;$(SolutionDir)..\external\DirectXTK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Dan\Downloads\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\include;$(WindowsSDK_IncludePath);$(SolutionDir)..\external\Effects11\inc;$(SolutionDir)..\external\DirectXTK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -79,9 +79,15 @@ void TriangleDemo::Initialize() {
     throw GameException("ID3D11Device::CreateInputLayour() failed.", hr);
 
   BasicEffectVertex vertices[] = {
-    BasicEffectVertex(XMFLOAT4(-1.0f, 0.0f, 0.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Red))),
-    BasicEffectVertex(XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Green))),
-    BasicEffectVertex(XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Blue)))
+    BasicEffectVertex(XMFLOAT4(-1.0f, +1.0f, -1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Green))),
+    BasicEffectVertex(XMFLOAT4(+1.0f, +1.0f, -1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Yellow))),
+    BasicEffectVertex(XMFLOAT4(+1.0f, +1.0f, +1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::White))),
+    BasicEffectVertex(XMFLOAT4(-1.0f, +1.0f, +1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::BlueGreen))),
+
+    BasicEffectVertex(XMFLOAT4(-1.0f, -1.0f, +1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Blue))),
+    BasicEffectVertex(XMFLOAT4(+1.0f, -1.0f, +1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Purple))),
+    BasicEffectVertex(XMFLOAT4(+1.0f, -1.0f, -1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Red))),
+    BasicEffectVertex(XMFLOAT4(-1.0f, -1.0f, -1.0f, 1.0f), XMFLOAT4(reinterpret_cast<const float*>(&ColorHelper::Black)))
   };
 
   D3D11_BUFFER_DESC vertex_buffer_desc;
@@ -95,11 +101,43 @@ void TriangleDemo::Initialize() {
   vertex_subresource_data.pSysMem = vertices;
   if (FAILED(mGame->Direct3DDevice()->CreateBuffer(&vertex_buffer_desc, &vertex_subresource_data, &mVertexBuffer)))
     throw GameException("ID3D11Device::CreateBuffer() failed.");
+
+  UINT indices[] = {
+    0, 1, 2,
+    0, 2, 3,
+
+    4, 5, 6,
+    4, 6, 7,
+
+    3, 2, 5,
+    3, 5, 4,
+
+    2, 1, 6,
+    2, 6, 5,
+
+    1, 7, 6,
+    1, 0, 7,
+
+    0, 3, 4,
+    0, 4, 7
+  };
+
+  D3D11_BUFFER_DESC index_buffer_desc;
+  ZeroMemory(&index_buffer_desc, sizeof(index_buffer_desc));
+  index_buffer_desc.ByteWidth = sizeof(UINT) * ARRAYSIZE(indices);
+  index_buffer_desc.Usage = D3D11_USAGE_IMMUTABLE;
+  index_buffer_desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+
+  D3D11_SUBRESOURCE_DATA index_subresource_data;
+  ZeroMemory(&index_subresource_data, sizeof(index_subresource_data));
+  index_subresource_data.pSysMem = indices;
+  if (FAILED(hr = mGame->Direct3DDevice()->CreateBuffer(&index_buffer_desc, &index_subresource_data, &mIndexBuffer)))
+      throw GameException("ID3D11Device::CreateBuffer() failed.");
 }
 
 void TriangleDemo::Update(const GameTime& game_time) {
-  mAngle += XM_PI * static_cast<float>(game_time.ElapsedGameTime());
-  XMStoreFloat4x4(&mWorldMatrix, XMMatrixRotationZ(mAngle));
+  mAngle += XM_PI *2* static_cast<float>(game_time.ElapsedGameTime());
+  XMStoreFloat4x4(&mWorldMatrix, XMMatrixRotationX(mAngle));
 }
 
 void TriangleDemo::Draw(const GameTime& game_time) {
@@ -110,6 +148,7 @@ void TriangleDemo::Draw(const GameTime& game_time) {
   UINT stride = sizeof(BasicEffectVertex);
   UINT offset = 0;
   direct3d_device_context->IASetVertexBuffers(0, 1, &mVertexBuffer, &stride, &offset);
+  direct3d_device_context->IASetIndexBuffer(mIndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
   XMMATRIX world_matrix = XMLoadFloat4x4(&mWorldMatrix);
   XMMATRIX wvp = world_matrix * mCamera->ViewMatrix() * mCamera->ProjectionMatrix();
@@ -117,7 +156,7 @@ void TriangleDemo::Draw(const GameTime& game_time) {
 
   mPass->Apply(0, direct3d_device_context);
 
-  direct3d_device_context->Draw(3, 0);
+  direct3d_device_context->DrawIndexed(36, 0, 0);
 }
 
 } // namespace Rendering

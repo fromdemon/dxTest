@@ -59,7 +59,7 @@ namespace Library {
     }
   }
 
-  void Utility::LoadBinary(const std::wstring& filename, std::vector<char>& data) {
+  void Utility::LoadBinaryFile(const std::wstring& filename, std::vector<char>& data) {
     std::ifstream file(filename.c_str(), std::ios::binary);
     if (file.bad())
       throw std::exception("Could not open file");

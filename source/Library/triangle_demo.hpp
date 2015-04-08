@@ -38,6 +38,7 @@ private:
 
   ID3D11InputLayout* mInputLayout = nullptr;
   ID3D11Buffer* mVertexBuffer = nullptr;
+  ID3D11Buffer* mIndexBuffer = nullptr;
   XMFLOAT4X4 mWorldMatrix;
 
   float mAngle = 0.0f;

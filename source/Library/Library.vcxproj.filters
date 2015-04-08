@@ -31,6 +31,21 @@
     <Filter Include="Source Files\Camera">
       <UniqueIdentifier>{713bd005-1ea0-415a-bbae-98932ac2150f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Model">
+      <UniqueIdentifier>{2b50b5c6-c7ea-434b-865a-ac4e756b1974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{177c8f91-e102-4ab7-a7e3-88e23aafdab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Effects">
+      <UniqueIdentifier>{2f811c90-cc63-42e4-a994-6581e4157d70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Effect">
+      <UniqueIdentifier>{eb2984bf-3e44-4908-bb48-1c5955f86ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="content">
+      <UniqueIdentifier>{889938b1-2f3d-4dae-bf15-f26501c04c16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.hpp">
@@ -84,11 +99,38 @@
     <ClInclude Include="first_person_camera.hpp">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="mesh.hpp">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model_material.hpp">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="model.hpp">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
     <ClInclude Include="service_container.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Misc</Filter>
     </ClInclude>
     <ClInclude Include="render_state_helper.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="variable.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="pass.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="technique.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="material.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="skybox.hpp">
+      <Filter>Header Files\Misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,5 +185,37 @@
     <ClCompile Include="render_state_helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model_material.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="pass.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="variable.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="technique.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="effect.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="basic_effect.fx">
+      <Filter>content</Filter>
+    </FxCompile>
+    <FxCompile Include="skybox.fx">
+      <Filter>content</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
